@@ -1,0 +1,13 @@
+<div class="posts_confirm">
+  <h1>confirm this post？</h1>
+  <section>
+    <%= form_with(model: @post, local: true) do |form| %>
+      <%= form.hidden_field :content %>
+      <%= form.hidden_field :image_cache %>
+      <p><%= @post.content %></p>
+      <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+      <%= form.submit "register" %>
+      <%= form.submit "return", name: 'back' %>
+    <% end %>
+  </section>
+</div>

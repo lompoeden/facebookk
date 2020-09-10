@@ -1,0 +1,13 @@
+<% @posts.each do |post| %>
+<section>
+  <%= link_to user_path(post.user.id) do %>
+    <%= post.user.name %>
+  <% end %>
+  <p class="created_at"><%= post.created_at.strftime('%Y年%-m月%-d日 %-H:%-M') %></p>
+  <p><%= post.content %></p>
+  <div >
+    <%= image_tag(post.image.url) if post.image && post.image.url %>
+  </div>
+  <%= link_to '詳細', post_path(post.id) %>
+</section>
+<% end %>

@@ -1,0 +1,11 @@
+<section>
+  <%= link_to user_path(@post.user.id) do %>
+    <%= @post.user.name %>
+  <% end %>
+  <p><%= @post.content %></p>
+  <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+  <% if @post.user_id == current_user.id %>
+    <%= link_to 'edit', edit_post_path(@post.id) %>
+    <%= link_to 'delete', post_path(@post.id), method: :delete, data: {confirm: '削除しますか？'} %>
+  <% end %>
+</section>
