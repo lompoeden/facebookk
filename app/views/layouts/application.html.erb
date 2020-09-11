@@ -1,34 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Facebookk </title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<header>
-  <ul>
-    <li><a href="#">Facebookk</a></li>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Login</a></li>
-    <li><a href="#">sign up</a></li>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#"><b>f</b>acebook</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+  aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+  <!-- Links -->
+  <ul class="navbar-nav mr-auto">
+
+  <li class="nav-item active">
+  <a class="nav-link" href="#">Home
+  <span class="sr-only">(current)</span>
+  </a>
+  </li>
+
+  <!-- Dropdown -->
+
   </ul>
-</header>
-<body>
-   <% flash.each do |key, value| %>
-   <%= content_tag(:div, value, class: "#{key}") %>
-   <% end %>
-   <% if logged_in? %>
-   <%= link_to "Profile", user_path(current_user.id) %>
-   <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-   <% else %>
-   <%= link_to "Sign up", new_user_path %>
-   <%= link_to "Login", new_session_path %>
-   <% end %>
-  <%= yield %>
-  <footer>
-    <p>Eden lompo.</p>
-    <p>© 2015-2016 DIVE INTO CODE Corp.</p>
-  </footer>
-</body>
-</html>
+  <!-- Login and sign up -->
+  <div class="md-form my-0">
+  <ul class="navbar-nav mr-auto">
+  <li class="nav-item active">
+  <a class="nav-link" href="#">Sign up
+  <span class="sr-only">(current)</span>
+  </a>
+  </li>
+  <li class="nav-item active">
+  <a class="nav-link" href="#">Login
+  <span class="sr-only">(current)</span>
+  </a>
+  </li>
+  </ul>
+
+  </div>
+  </div>
+  <!-- Collapsible content -->
+
+  </nav>
+  <body>
+    <body>
+     <% flash.each do |key, value| %>
+     <%= content_tag(:div, value, class: "#{key}") %>
+     <% end %>
+     <% if logged_in? %>
+     <%= link_to "Profile", user_path(current_user.id) %>
+     <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+     <% else %>
+     <%= link_to "Sign up", new_user_path %>
+     <%= link_to "Login", new_session_path %>
+     <% end %>
+    <%= yield %>
+    <footer>
+      <p>Eden lompo.</p>
+      <p>© 2015-2020 DIVE INTO CODE Corp.</p>
+    </footer>
+    </body>
+    </html>
