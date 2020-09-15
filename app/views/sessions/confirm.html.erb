@@ -1,11 +1,11 @@
-<div class="posts_confirm">
-  <h1>confirm this post？</h1>
+<div class="feeds_confirm">
+  <h1>confirm this feed？</h1>
   <section>
-    <%= form_with(model: @post, local: true) do |form| %>
+    <%= form_with(model: @feed, local: true) do |form| %>
       <%= form.hidden_field :content %>
       <%= form.hidden_field :image_cache %>
-      <p><%= @post.content %></p>
-      <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+      <p><%= @feed.content %></p>
+      <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
       <%= form.submit "register" %>
       <%= form.submit "return", name: 'back' %>
     <% end %>

@@ -1,5 +1,39 @@
-// omit
-<div class="field">
-  <%= form.label :image %>
-  <%= form.file_field :image %>
-</div>
+<%= form_with(model: @feed, local: true, url: confirm_feeds_url) do |form| %>
+  <% if feed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+      <ul>
+      <% feed.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <th class="title"><%= form.label :"title" %></th>
+      <td class="title"><%= form.text_field :title %></td>
+    </tr>
+    <tr>
+      <th class="content"><%= form.label :"contents" %></th>
+      <br>
+      <td class="content"><%= form.text_field :content %></td>
+    </tr>
+  </table>
+
+  <div class="image">
+    <%= form.label :image %>
+    <%= image_tag(@feed.image.url)if @feed.image && @feed.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit "submit" %>
+  </div>
+<% end %>

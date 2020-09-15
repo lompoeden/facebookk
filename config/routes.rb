@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  resources :feeds
-  get 'sessions/new'
-  root 'users#index'
-  resources :posts do
-   collection do
-     post :confirm
-   end
- end
-
- resources :users
- resources :sessions
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :feeds do
+    collection do
+      post :confirm
+      patch :confirm
+      patch :confirm
+    end
+  end
+  resources :blogs do
+    collection do
+      post :confirm
+    end
+  end
+  root to: "users#new"
 end

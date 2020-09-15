@@ -1,7 +1,13 @@
+<h1>detailed screen</h1>
 <p id="notice"><%= notice %></p>
+<p>title：<%= @feed.title %></p>
+<p>content: <%= @feed.content %></p>
+
 <p>
   <strong>Image:</strong>
   <%= image_tag @feed.image.url %>
 </p>
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+
+<%= link_to 'edit', edit_feed_path(@feed) %> |
+<%= link_to 'delete', feeds_path, method: :delete, data: { confirm: 'do you really want to delete？' } %> |
+<%= link_to 'return to view', feeds_path%>

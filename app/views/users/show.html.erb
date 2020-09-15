@@ -1,13 +1,2 @@
-<div class="users_show">
-  <h1><%= @user.name %>のページ</h1>
-  <% @posts.each do |post| %>
-    <section>
-      <p class="created_at"><%= post.created_at.strftime('%Y年%-m月%-d日 %-H:%-M') %></p>
-      <p><%= post.content %></p>
-      <div >
-        <%= image_tag(post.image.url) if post.image && post.image.url %>
-      </div>
-      <%= link_to 'details', post_path(post.id) %>
-    </section>
-  <% end %>
-</div>
+<h1><%= @user.name %>user</h1>
+<p>email address: <%= @user.email %></p>
