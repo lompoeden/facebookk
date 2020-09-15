@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Feeds</h1>
+<%= link_to 'New Feed', new_feed_path %>
 <table>
   <thead>
     <tr>
-      <th class="title">title</th>
-      <th class="content">content</th>
-      <th class= "list">image</th>
-      <th class="user">user</th>
-      <th class= "created_at">created_at</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,7 +13,9 @@
   <tbody>
     <% @feeds.each do |feed| %>
       <tr>
-        <td><%= feed.image %></td>
+        <td><%= feed.user.name %></td>
+        <td>  <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %> <td>
+        <td><%= feed.content %></td>
         <td class= "created_at"><%= l(feed.created_at, format: :short)%></td>
         <td><%= link_to 'Show', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
@@ -25,7 +24,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<div class="link">
-<%= link_to 'New Feed', new_feed_path %>
