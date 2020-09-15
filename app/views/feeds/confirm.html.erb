@@ -11,7 +11,7 @@
   </div>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :current_user %>
-  <%= form.submit "feed" %>
+  <%= form.submit "submit" %>
 <% end %>
 <%= form_with(model:@feed, url:feeds_path, local:true, method:"get") do |form| %>
   <%= form.hidden_field :image_cache %>
