@@ -23,10 +23,10 @@ class FeedsController < ApplicationController
   end
 
   def create
-    @feed = current_user.feeds.build(feed_params)
+    @feed = Feed.new(feed_params)
 
     respond_to do |format|
-      if @feed.save
+      if @feed.save(validate:false)
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
@@ -49,9 +49,9 @@ class FeedsController < ApplicationController
   end
 
   def confirm
-    @feed =current_user.feeds.build(feed_params)
+    @feed =Feed.new(feed_params)
     @feed.id = params[:id]
-    render :new if @feed.invalid?
+    #render :new if @feed.invalid?
   end
 
   def destroy
@@ -68,6 +68,6 @@ class FeedsController < ApplicationController
     end
 
     def feed_params
-      params.require(:feed).permit(:feeds, :id, :image, :image_cache, :user_id, :title, :content)
+      params.require(:feed).permit( :id, :image, :image_cache, :user_id, :title, :content)
     end
   end

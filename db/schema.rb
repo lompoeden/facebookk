@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_09_15_122747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "title"
+    t.string "content"
     t.index ["user_id"], name: "index_feeds_on_user_id"
   end
 
@@ -31,6 +33,6 @@ ActiveRecord::Schema.define(version: 2020_09_15_122747) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
-def change
+
   add_foreign_key "feeds", "users"
 end
