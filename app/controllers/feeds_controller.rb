@@ -1,22 +1,29 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
-
+  before_action :current_user
+    before_action :authenticate_user
+    before_action :logged_in?
+    before_action :check_user, only: [:edit,:update,:destroy]
   def index
     @feeds = Feed.all
   end
 
-def show
+  def show
   end
 
   def new
-    @feed = Feed.new
+    if params[:back]
+    @feed = Feed.new(feed_params)
+    else
+      @feed = Feed.new
+    end
   end
 
   def edit
   end
 
   def create
-    @feed = Feed.new(feed_params)
+    @feed = current_user.feeds.build(feed_params)
 
     respond_to do |format|
       if @feed.save
@@ -29,10 +36,6 @@ def show
     end
   end
 
-  private
- def feed_params
-   params.require(:feed).permit(:image, :image_cache)
- end
   def update
     respond_to do |format|
       if @feed.update(feed_params)
@@ -43,6 +46,12 @@ def show
         format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def confirm
+    @feed =current_user.feeds.build(feed_params)
+    @feed.id = params[:id]
+    render :new if @feed.invalid?
   end
 
   def destroy
@@ -59,6 +68,6 @@ def show
     end
 
     def feed_params
-      params.require(:feed).permit(:image)
+      params.require(:feed).permit(:feeds, :id, :image, :image_cache, :user_id, :title, :content)
     end
-end
+  end

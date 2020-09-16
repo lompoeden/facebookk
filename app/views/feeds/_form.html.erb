@@ -1,4 +1,4 @@
-<%= form_with(model: @feed, local: true, url:confirm_feeds_path) do |form| %>
+<%= form_with(model: @feed, local: true, url:choose_new_or_edit) do |form| %>
   <% if feed.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
@@ -13,11 +13,11 @@
 
   <table>
     <tr>
-      <th class="title"><%= form.label :"title" %></th>
+      <th class="title"><%= form.label :title %></th>
       <td class="title"><%= form.text_field :title %></td>
     </tr>
     <tr>
-      <th class="content"><%= form.label :"contents" %></th>
+      <th class="content"><%= form.label :content %></th>
       <br>
       <td class="content"><%= form.text_field :content %></td>
     </tr>
@@ -34,6 +34,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "submit" %>
+    <%= form.submit %>
   </div>
 <% end %>
