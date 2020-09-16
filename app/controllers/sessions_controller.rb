@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
       if logged_in?
         redirect_to feeds_path
     end
-    end
+  end
 
     def create
       user = User.find_by(email: params[:session][:email].downcase)
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
       flash[ :notice ]= ' Logged out '
       redirect_to new_session_path
     end
+    end
   end
-  end
-  end
+end
