@@ -51,7 +51,7 @@ class FeedsController < ApplicationController
   def confirm
     @feed =Feed.new(feed_params)
     @feed.id = params[:id]
-    #render :new if @feed.invalid?
+    render :new if @feed.invalid?
   end
 
   def destroy
