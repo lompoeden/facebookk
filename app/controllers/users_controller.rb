@@ -15,11 +15,11 @@ def create
    end
  end
 
-def show
+ def show
     @user = User.find(params[:id])
   end
 
-private
+  private
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
