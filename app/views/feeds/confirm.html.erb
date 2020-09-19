@@ -12,9 +12,9 @@
   </div>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :user_id %>
-  <%= form.submit "post" %>
+  <%= form.submit "submit" %>
 <% end %>
-<%= form_with(model:@feed, url:feeds_path, local:true, method:"get") do |form| %>
+<%= form_with(model:@feed, url:feeds_path, local:true, method:'get') do |form| %>
   <%= form.hidden_field :image_cache %>
-  <%= form.submit "return", name: "back" %>
+  <%= form.submit "back", name: "back" %>
 <% end %>

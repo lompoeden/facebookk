@@ -3,7 +3,7 @@ class FeedsController < ApplicationController
   before_action :current_user
     before_action :authenticate_user
     before_action :logged_in?
-    before_action :check_user, only: [:edit,:update,:destroy]
+
   def index
     @feeds = Feed.all
   end
@@ -20,6 +20,11 @@ class FeedsController < ApplicationController
   end
 
   def edit
+    if params[:edit]
+    @feed = Feed.new(feed_params)
+    else
+      @feed = Feed.new
+    end
   end
 
   def create
@@ -51,7 +56,7 @@ class FeedsController < ApplicationController
   def confirm
     @feed =Feed.new(feed_params)
     @feed.id = params[:id]
-    render :new if @feed.invalid?
+  #  render :new if @feed.invalid?
   end
 
   def destroy
