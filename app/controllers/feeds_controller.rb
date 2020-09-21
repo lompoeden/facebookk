@@ -20,12 +20,8 @@ class FeedsController < ApplicationController
   end
 
   def edit
-    if params[:edit]
-    @feed = Feed.new(feed_params)
-    else
-      @feed = Feed.new
-    end
   end
+
 
   def create
     @feed = Feed.new(feed_params)
@@ -43,10 +39,10 @@ class FeedsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @feed.update(feed_params)
+      @feed.id = params[:id]
         format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
         format.json { render :show, status: :ok, location: @feed }
-      else
+
         format.html { render :edit }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
@@ -74,5 +70,5 @@ class FeedsController < ApplicationController
 
   def feed_params
       params.require(:feed).permit( :id, :image, :image_cache, :user_id, :title, :content)
-  end
+  
 end

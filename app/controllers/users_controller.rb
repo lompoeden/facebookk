@@ -19,6 +19,13 @@ def create
     @user = User.find(params[:id])
   end
 
+  def update
+    if @feed.update(blog_params)
+      redirect_to feed_path, notice: "feed was successfully updated！"
+    else
+      render :edit
+    end
+  end
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
