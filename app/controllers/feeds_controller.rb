@@ -37,7 +37,7 @@ class FeedsController < ApplicationController
 
   def update
     respond_to do |format|
-      @feed.id = params[:id]
+    if   @feed =current_user.feeds.build(feed_params)
         format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
         format.json { render :show, status: :ok, location: @feed }
 
@@ -69,4 +69,5 @@ class FeedsController < ApplicationController
   def feed_params
       params.require(:feed).permit( :id, :image, :image_cache, :user_id, :title, :content)
 
+end
 end

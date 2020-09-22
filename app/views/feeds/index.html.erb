@@ -21,7 +21,7 @@
         <td class= "title"><%= feed.title %></td>
         <td class= "content"><%= feed.content %></td>
         <td><%= image_tag feed.image.url %></td>
-        <td><%= feed.user.name %></td>
+        <td><%= @feed %></td>
         <td class= "created_at"><%= l(feed.created_at, format: :short)%></td>
         <td class= "button"><%= link_to 'show', feed %></td>
         <td class= "button"><%= link_to 'edit', edit_feed_path(feed) %></td>
