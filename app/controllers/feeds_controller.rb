@@ -1,7 +1,5 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
-  before_action :current_user
-    before_action :authenticate_user
     before_action :logged_in?
 
   def index
@@ -50,7 +48,7 @@ class FeedsController < ApplicationController
   end
 
   def confirm
-    @feed =Feed.new(feed_params)
+    @feed =current_user.feeds.build(feed_params)
     @feed.id = params[:id]
   #  render :new if @feed.invalid?
   end
@@ -70,5 +68,5 @@ class FeedsController < ApplicationController
 
   def feed_params
       params.require(:feed).permit( :id, :image, :image_cache, :user_id, :title, :content)
-  
+
 end

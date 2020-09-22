@@ -1,20 +1,15 @@
 <h1>confirmation screen</h1>
-<%= form_with(model: @feed, url:feeds_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <p>title：<%= @feed.title %></p>
-  <%= form.hidden_field :content %>
-  <p>content：<%= @feed.content %></p>
+<%= form_with(model: @feed, local: true) do |form| %>
   <div class="user">
   </div>
   <div class="image">
-    <p>imege</p>
-    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
+    <p>image</p>
+  <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
   </div>
   <%= form.hidden_field :image_cache %>
-  <%= form.hidden_field :user_id %>
   <%= form.submit "submit" %>
 <% end %>
-<%= form_with(model:@feed, url:feeds_path, local:true, method:'get') do |form| %>
+<%= form_with(model:@feed, local:true, method:'get') do |form| %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit "back", name: "back" %>
 <% end %>
