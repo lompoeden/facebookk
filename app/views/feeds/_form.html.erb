@@ -14,12 +14,12 @@
   <table>
     <tr>
       <th class="title"><%= form.label :title %></th>
-      <td class="title"><%= form.text_area :title %></td>
+      <td class="title"><%= form.text_field :title %></td>
     </tr>
     <tr>
       <th class="content"><%= form.label :content %></th>
       <br>
-      <td class="content"><%= form.text_area :content %></td>
+      <td class="content"><%= form.text_field :content %></td>
       <% form.hidden_field :id %>
     </tr>
   </table>
@@ -32,7 +32,7 @@
     <%= form.hidden_field :user_id,value: current_user.id %>
   </div>
   <div class="field">
-
+    <% feed.user_id %>
   </div>
   <div class="actions">
     <%= form.submit %>
