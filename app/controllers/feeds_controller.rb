@@ -1,8 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
     before_action :logged_in?
-     before_action :authenticate_user
-    before_action :current_user
 
   def index
     @feeds = Feed.all
@@ -24,10 +22,10 @@ class FeedsController < ApplicationController
 
 
   def create
-    @feed = current_user.posts.build(post_params)
+    @feed = current_user.feeds.build(feed_params)
 
     respond_to do |format|
-      if @feed.save(validate:true)
+      if @feed.save(validate:false)
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else

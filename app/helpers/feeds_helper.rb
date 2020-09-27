@@ -11,5 +11,5 @@ end
   end
 end
 def confirm_form_method
-    @feed.id ? 'patch' : 'post' # 作成時はpost, 編集時は patchを指定
+    @feed.id ? 'patch' : 'feed' # 作成時はpost, 編集時は patchを指定
   end

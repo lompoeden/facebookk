@@ -1,5 +1,6 @@
 <h1>confirmation screen</h1>
-<%= form_with(model: @feed, local: true) do |form| %>
+<%= form_with(model: @feed,url: feeds_path, local: true) do |form| %>
+ <%= form.hidden_field :feeds %>
 <%= form.hidden_field :title %>
   <p>title：<%= @feed.title %></p>
   <%= form.hidden_field :content %>
