@@ -3,6 +3,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_122747) do
 
   create_table "feeds", force: :cascade do |t|
     t.text "image"
+    t.text "feeds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

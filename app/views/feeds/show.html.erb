@@ -5,8 +5,9 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @feed.image.url %>
+  <%= image_tag(@feed.image.url)if @feed.image && @feed.image.url %>
 </p>
 
 <%= link_to 'edit', edit_feed_path(@feed) %> |
+<%= link_to 'delete', feeds_path, method: :delete, data: { confirm: 'are you sure？' } %> |
 <%= link_to 'back', feeds_path%>
