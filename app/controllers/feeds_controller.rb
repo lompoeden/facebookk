@@ -3,6 +3,7 @@ class FeedsController < ApplicationController
     before_action :logged_in?
     before_action :current_user
     before_action :authenticate_user
+    before_action :check_user, only: [:edit,:update,:destroy]
 
   def index
     @feeds = Feed.all
@@ -27,7 +28,7 @@ class FeedsController < ApplicationController
     @feed = current_user.feeds.build(feed_params)
 
     respond_to do |format|
-      if @feed.save(validate:false)
+      if @feed.save
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
@@ -52,7 +53,7 @@ class FeedsController < ApplicationController
   def confirm
     @feed =current_user.feeds.build(feed_params)
     @feed.id = params[:id]
-  #  render :new if @feed.invalid?
+   render :new if @feed.invalid?
   end
 
   def destroy

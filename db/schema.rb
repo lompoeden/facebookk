@@ -6,7 +6,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_122747) do
     t.text "feeds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user.name"
     t.string "title"
     t.string "content"
     t.index ["user_id"], name: "index_feeds_on_user_id"

@@ -1,0 +1,57 @@
+
+html,body{
+  height: 98%;
+}
+
+ .container{
+   width: 100%;
+   position: relative;
+   min-height: 100%;
+ }
+ .inner{
+   padding-bottom: 50px;
+ }
+
+ .navbar {
+   background-color: #4267b2;
+ }
+ .navbar-default .navbar-brand{
+   color: white;
+ }
+ .navbar-default .navbar-nav>li>a{
+   color: white;
+ }
+ h1{
+   width:auto;
+   margin:auto;
+   text-align: left;
+ }
+ .notice {
+   width:auto;
+   margin:auto;
+   text-align: center;
+ }
+ table{
+   margin:auto;
+ }
+ .created_at{
+   padding-left: 100px;
+ }
+ .link {
+   width:auto;
+   margin:auto;
+   text-align: center;
+ }
+.push{
+  height: 100px;
+}
+ footer {
+   width:98%;
+   background-color: #4267b2;
+   color:white;
+   text-align: center;
+   margin: auto;
+   height: 50px;
+   position: absolute;
+   bottom: 0;
+ }
