@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
     def check_user
         if current_user.id != @feed.user.id
-          flash[:notice] = "権限がありません"
+          flash[:notice] = "feed cannot be deleted"
           redirect_to feeds_path
         end
       end
